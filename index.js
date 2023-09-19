@@ -1,24 +1,10 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import mongoose from "mongoose";
+import { connectionMongoDB } from "./db-connect/db-connect.js";
 import { registerValidation } from "./validation/auth.js";
 import { validationResult } from "express-validator";
 import User from "./Models/Users.js";
-// mongodb+srv://admin:omGBOzGL1ib4LPN0@cluster0.tjwdgnm.mongodb.net/?retryWrites=true&w=majority
-// encodeURIComponent("<password>");
-// omGBOzGL1ib4LPN0;
 
-async function connectionMongoDB() {
-    try {
-        await mongoose
-            .connect(
-                "mongodb+srv://admin:omGBOzGL1ib4LPN0@cluster0.tjwdgnm.mongodb.net/?retryWrites=true&w=majority"
-            )
-            .then(() => console.log("DB OK"));
-    } catch (error) {
-        console.log(error);
-    }
-}
 connectionMongoDB();
 
 const app = express();
